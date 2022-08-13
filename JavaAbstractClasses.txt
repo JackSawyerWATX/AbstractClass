@@ -1,0 +1,58 @@
+				+-~-~-~-~-~-~-~-~-~-~-~+
+				|==>Abstract Classes<==|
+				+~-~-~-~-~-~-~-~-~-~-~-+
+
+The abstract keyword is a non-access modifier used for classes and methods:
+
+The purpose of an abstract class is to be a more general class that cannot be instantiated. They instead act as templates for other classes to extend from. Abstract classes can have both concrete and abstract methods. Concrete methods have a code block that runs statements. The methods we’ve been creating so far have been concrete. Abstract methods do not have a code block, and these methods must be implemented by concrete subclasses.
+
+	1) An abstract class is a class that is declared abstract it may 	   or may not include abstract methods.
+	2) Abstract classes cannot be instantiated, but they can be 
+	   extended.
+	3) An abstract class can have 0 or more abstract methods, but if 	   a class has at least one abstract method, then the class has 	   to be abstract.
+	4) Any abstract methods defined in an abstract parent class must 	   be overridden in all subclasses.
+
+In the Animal class, notice the syntax for the two abstract methods. Instead of a code block, there is a semi-colon after the method’s parameter list. If you look at the Bird class, notice that it is a subclass of Animal and overrides the abstract methods.
+
++-------------------------------------------------------------------+
+|	public abstract class Animal {						   |
+|		//Abstract Method								   |
+|		public abstract void sounds();					   |
+| 													   |
+|		//Abstract method #2							   |
+| 		public abstract int age();						   |
+| 													   |
+|		//Concrete method								   |
+| 		public void sleep() {							   |
+| 			System.out.println("Snores really loud");		   |
+| 		}											   |
++-------------------------------------------------------------------+
++-------------------------------------------------------------------+
+|	public class Bird extends Animal{						   |
+|													   |
+| 		@Override										   |
+| 		public void sounds() {							   |
+|  			System.out.println("I cherp");				   |
+| 		}											   |
+|													   |
+|		@Override										   |
+|		public int age(int value) {						   |
+|  			System.out.println("I am the bird I am " + value);   |
+|  			return value;								   |
+| 		}											   |
+|	}												   |
++-------------------------------------------------------------------+
++-------------------------------------------------------------------+
+|	class Main{										   |
+|		public static void main(String[] args) {			   |
+|			Bird bird = new Bird();						   |
+|													   |
+|		bird.sounds();									   |
+|		bird.age(2);									   |
+|		}											   |
+|	}												   |
++-------------------------------------------------------------------+
+
+In the Animal class, notice the syntax for the two abstract methods. Instead of a code block, there is a semi-colon after the method’s parameter list. If you look at the Bird class, notice that it is a subclass of Animal and overrides the abstract methods.
+
+Why would you want to make a method abstract? If it doesn’t make sense to provide a default implementation in the superclass. For example, each subclass may have its own unique implementation, so the implementation is left to the subclasses.
